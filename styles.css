@@ -1,0 +1,87 @@
+body {
+    background-color: orange;
+}
+
+table {
+    width: 500px;
+
+
+}
+
+td {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    border: 5px solid black;
+
+}
+
+th {
+    background-color: gray;
+    padding: 10px;
+    text-align: center;
+    border: 5px solid black;
+}
+
+td:hover {
+    background-color: aqua
+}
+
+.img3 {
+    float: right;
+    float: up;
+    border: 3px solid black
+}
+
+a {
+    font-size: 30px;
+}
+
+.img1 {
+    float: left;
+    padding: 20px;
+}
+
+#listO {
+    background-color: aqua;
+    font-size: 30px;
+    border: solid black 5px;
+}
+
+#listD {
+    background-color: aqua;
+    font-size: 30px;
+    border: solid black 5px;
+}
+
+#listO li:nth-child(even) {
+    background-color: white
+}
+
+#listD li:nth-child(even) {
+    background-color: white;
+}
+#offense {
+    font-size:40px;
+}
+#defense {
+font-size:40px;
+}
+h4 {
+    background-color:white;
+}
+h3 {
+    background-color:white;
+}
+
+form {
+    border: solid black 3px;
+    border-radius: 5px;
+}
+p {
+    font-size: 10px;
+    border-bottom:solid black 3px
+}
+#ScheduleHeader {
+    border-bottom: solid black 3px;
+}
