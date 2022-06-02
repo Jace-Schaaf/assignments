@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "chai": "^4.3.6",
+    "jquery": "^3.6.0",
+    "mocha": "^10.0.0"
+  },
+  "name": "labs",
+  "description": "This is to show what vie been learning and to practice code",
+  "version": "1.0.0",
+  "main": "ArraysAndFunctions.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}

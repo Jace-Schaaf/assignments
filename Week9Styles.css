@@ -1,0 +1,63 @@
+p {
+    border: solid white 3px;
+
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+
+body {
+    background-color: lightblue;
+}
+
+
+.container {
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.row {
+    padding: 5px;
+    margin: 5px;
+    border: solid black;
+    border-radius: 5px;
+}
+
+.col-md {
+    padding: 5px;
+    margin: 5px;
+    border: solid white;
+    border-radius: 5px;
+}
+
+.tableHead {
+    width: 100px;
+    justify-content: center;
+    Border-bottom: solid black 5px
+}
+
+.btn {
+    margin-left: 15px;
+
+}
+
+.mb-3,.mb-5 {
+    margin-left: 15px;
+}
+
+h4 {
+    margin-left: 15px;
+}
+
+.table {
+    margin-left: 15px;
+}
+
+.navbar-brand {
+    color: red;
+    border-bottom: solid black;
+}
