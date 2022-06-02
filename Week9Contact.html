@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="Week9Styles.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TechPlex</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Week9.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Week9Contact.html">Contact</a>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Week9Review.html">Review</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Login/Logout</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+
+    <h4 class="TableHead"> Staff contact info</h4>
+    <br>
+
+    <table class="table table-hover table-info">
+        <thead>
+            <tr>
+                <th scope="col">Phone Number</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">(406)555-5555</th>
+                <td>Mark</td>
+                <td>Smith</td>
+                <td>Mark.smith@gmail.com</td>
+            </tr>
+            <tr>
+                <th scope="row">(305)999-9999</th>
+                <td>Jacob</td>
+                <td>Brown</td>
+                <td>JBrown@yahoo.com</td>
+            </tr>
+            <tr>
+                <th scope="row">(720)111-1111</th>
+                <td> Jim </td>
+                <td> Allen</td>
+                <td>Allen.J@outlook.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+</body>
