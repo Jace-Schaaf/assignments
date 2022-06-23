@@ -17,7 +17,7 @@ class Car {
 }
 
 class DealerService {
-    static url = "https://crudcrud.com/api/98945b5cb74e4aa9b8481425d03d5e62/dealers";
+    static url = "https://crudcrud.com/api/4b482474892d40ec949aefa4a870d73ds/dealers";
 
     static getAllDealers() {
         return $.get(this.url);
@@ -28,6 +28,7 @@ class DealerService {
     }
 
     static createDealer(dealer) {
+        
         return $.post(this.url, dealer);
     }
 
@@ -140,7 +141,7 @@ class DOMManager {
     }
 }
 
-$('#create-new-dealer').click(() => {
+$('#create-new-dealer').on("click", function() {
 DOMManager.createDealer($('#new-dealer-name').val());
 $('#new-dealer-name').val("");
 });
