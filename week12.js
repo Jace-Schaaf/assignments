@@ -1,149 +1,143 @@
-class Dealer {
-    contructor(name) {
+class House{
+    constructor(name){
         this.name = name;
-        this.cars = [];
+        this.room = [];
     }
 
-    addCar(name, speed) {
-        this.cars.push(new Car(name, speed));
+    addRoom(name,area){
+        this.rooms.push(new room(name,area));
     }
 }
 
-class Car {
-  contructor(name, speed) {
-    this.name = name;
-    this.speed = speed;
-  }
+class Room{
+    constructor(name,area){
+        this.name = name;
+        this.area = area;
+    }
 }
 
-class DealerService {
-    static url = "https://crudcrud.com/api/4b482474892d40ec949aefa4a870d73ds/dealers";
+class HouseService {
+    static url = 'https://ancient-taiga-31359.herokuapp.com/api/houses';
 
-    static getAllDealers() {
+    static getAllHouses(){
         return $.get(this.url);
     }
-
-    static getDealer(id) {
-        return $.get(this.url + `/${id}`);
+    static getHouse(id){
+        return  $.get(this.url + `/${id}`);
     }
-
-    static createDealer(dealer) {
-        
-        return $.post(this.url, dealer);
+    static createHouse(house){
+        return $.post(this.url, house);
     }
-
-    static updateDealer(dealer) {
+    static updateHouse(house) {
         return $.ajax({
-           url: this.url + `/${dealer._id}`,
-           dataType: 'json',
-           data: JSON.stringify(dealer),
-           contentType: 'application/json',
-           type: 'PUT'
+            url: this.url +`/${house._id}`,
+            dataType: 'json',
+            data: JSON.stringify(house),
+            contentType: 'application/json',
+            type: 'PUT'         
         });
     }
-
-    static deleteDealer(id) {
+    static deleteHouse(id){
         return $.ajax({
-            url: this.url +`/${id}`,
-            type: 'DELETE'
+            url: this.url + `/${id}`,
+            type:'DELETE'
         });
     }
 }
 
 class DOMManager {
-    static dealers;
+    static houses;
 
-    static getAllDealers() {
-        DealerService.getAllDealers().then(dealers => this.render(dealers));
+    static getAllHouses() {
+        HouseService.getAllHouses().then(houses => this.render(houses));
     }
 
-    createDealer(name) {
-        DealerService.createDealer(new Dealer(name))
+    static createHouse(name) { 
+        HouseService.createHouse(new House(name))
         .then(() => {
-            return DealerService.getAllDealers()
+            return HouseService.getAllHouses();
         })
-        .then((dealers) => this.render(dealers));
+        .then((house) => this.render(houses));
     }
 
-    static deleteDealer(id) {
-      DealerService.deleteDealer(id)
-      .then(() => {
-        return DealerService.getAllDealers();
-      })
-      .then((dealers) => this.render(dealers));
+    static deleteHouse(id){ 
+        HouseService.deleteHouse(id)
+            .then(() =>{
+                return HouseService.getAllHouses();
+            })
+            .then((houses) => this.render(houses));
     }
 
-    static addCar(id) {
-        for (let dealer of this.dealers) {
-            if (dealer._id == id) {
-                dealer.cars.push(new Car($(`#${dealer._id}-car-name`).val(), $(`#${dealer._id}-car-speed`).val()));
-                DealerService.updateDealer(dealer)
-                .then(() => {
-                    return DealerService.getAllDealers();
-                })
-                .then((dealers) => this.render(dealers));
-            }
-        }
-    }
-
-    static deleteCar(dealerId, carId) {
-      for (let dealer of this.dealers) {
-        if (dealer._id == dealerId) {
-            for (let car of dealer.cars) {
-                if (car._id == carId) {
-                    dealer.cars.splice(dealer.cars.indexOf(car), 1);
-                    DealerService.updateDealer(dealer)
+    static addRoom(id) { //! not working
+        for (let house of this.houses){
+            if (house._id == id){
+                house.rooms.push(new Room($(`#${house._id}-room-name`).val(),$(`#${house._id}-room-area`).val()))
+                HouseService.updateHouse(house) 
                     .then(() => {
-                        return DealerService.getAllDealers();
+                        return HouseService.getAllHouses();
                     })
-                    .then((dealers) => this.render(dealers));
-                }
+                    .then((houses) => this.render(houses));
             }
         }
-      }
+    }
+    
+    static deleteRoom(houseId,roomId){ 
+        for (let house of this.houses){
+           if (house._id == houseId) {
+            for (let room of house.rooms) {
+                house.rooms.splice(house.rooms.indexOf(room),1);
+                HouseService.updateHouse(house)
+                .then(() =>{
+                   return HouseService.getAllHouses();
+                })
+                .then((houses) => this.render(houses))
+            }
+           }
+        }
     }
 
-    static render(dealers) {
-        this.dealers = dealers;
+    static render(houses){
+        this.houses = houses;
         $('#app').empty();
-        for (let dealer of dealers) {
-            $('app').prepend(
-                `<div id="${dealer._id}" class="card">
-                <div class="card-header">
-                <h2>${dealer.name}</h2>
-                <button class="btn btn-danger" onclick="DOMManager.deleteDealer('${dealer._id}')">Delete </button>
-                </div>
-                <div class="card-body">
-                   <div class="card">
-                   <div class="row">
-                   <div class="col-sm">
-                      <input type="text" id="${dealer._id}-car-name" class="form-control" placeholder="Car Name">
-                   </div>
-                   <div class="col-sm">
-                   <input type="text" id="${dealer._id}-car-speed" class="form-control" placeholder="Car Speed">
-                   </div>
-                   <button id="${dealer._id}-new-car" onclick="DOMManager.addCar('${dealer._id})" class="btn btn-primary form-control">Add</button>
-                </div>
-                </div>
+        for (let house of houses) {
+            $('#app').prepend(
+                `<div id="${house._id}" class="card">
+                    <div class"card-header">
+                        <h2>${house.name}</h2>
+                        <button class="btn btn-danger" onclick="DOMManager.deleteHouse('${house._id}')">Delete</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="card"
+                            <div class="row":>
+                                <div class="col_sm">
+                                    <input type="text" id="${house._id}-room-name" class ="form-control" placeholder="Room Name">
+                                </div>
+                                <div class="col_sm">
+                                    <input type="text" id="${house._id}-room-area" class ="form-control" placeholder="Room Area">
+                                </div>
+                            </div>
+                            <button id="${house._id}-new-room" onclick="DOMManager.addRoom('${house._id}')" class="btn btn-primary form-control">Add</button>
+                        </div>
+                    </div>
                 </div><br>`
-                
             );
-            for (let car of dealer.cars) {
-                $(`#${dealer._id}`).find('.card-body').append(
+            for (let room of house.rooms) {
+                $(`#${house._id}`).find('.card-body').append(
                     `<p>
-                    <span id="name-${car._id}"><strong>Name: </strong> ${car.name}</span>
-                    <span id="speed-${car._id}"><strong>Speed: </strong> ${car.speed}</span>
-                    <button class="btn btn-danger" onclick="DOMManager.deleteCar('${dealer._id}' , '(${car._id})')>Delete Car</button>
-                    </p>`
+                    <span id="name-${room._id}"><strong>Name: </strong> ${room.name}</span>
+                    <span id="area-${room._id}"><strong>Area: </strong> ${room.area}</span>
+                    <button class="btn btn-dark" onclick="DOMManager.deleteRoom('${house._id}', '${room._id}')">Delete Room</button></p>`
                 );
             }
         }
     }
 }
 
-$('#create-new-dealer').on("click", function() {
-DOMManager.createDealer($('#new-dealer-name').val());
-$('#new-dealer-name').val("");
+$('#create-new-house').click(() =>{ 
+    DOMManager.createHouse($('#new-house-name').val());
+    $('#new-house-name').val('');
 });
 
-DOMManager.getAllDealers();
+
+
+DOMManager.getAllHouses();
